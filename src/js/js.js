@@ -4,11 +4,11 @@ let eventoTeclado = new window.keypress.Listener(this, configTeclado);
 function eleccion(jugada) {
   let resultado = "";
   if (jugada == 1) {
-    resultado = "Piedra 🥌";
+    resultado = "Piedra";
   } else if (jugada == 2) {
-    resultado = "Papel 🧻";
+    resultado = "Papel";
   } else if (jugada == 3) {
-    resultado = "Tijera ✂";
+    resultado = "Tijera";
   } else {
     resultado = "MAL ELEGIDO";
   }
@@ -18,7 +18,7 @@ function eleccion(jugada) {
 let jugador = 0;
 let pc = 0;
 let currentIndex = 0;
-const vector = ["piedra", "papel", "tijer"];
+const vector = ["Piedra", "Papel", "Tijera"];
 
 let intervalo = setInterval(()=>{
   
@@ -39,11 +39,12 @@ function validacion() {
   const mensaje = document.getElementById("mensaje");
   const imgJ = document.getElementById("imagenJ");
   const imgE = document.getElementById("imagenE");
-  imgJ.setAttribute("src", `src/img/${eleccion(jugador).toLowerCase().slice(0, eleccion(jugador).length - 3)}.svg`);
-  imgJ.style.transform = "scaleX(-1)";
+ 
+  imgJ.setAttribute("src", `src/img/${eleccion(jugador)}.svg`);
+  //imgJ.style.transform = "scaleX(-1)";
   imgJ.setAttribute("alt", eleccion(jugador));
 
-  imgE.setAttribute("src", `src/img/${eleccion(pc).toLowerCase().slice(0, eleccion(pc).length - 3)}.svg`);
+  imgE.setAttribute("src", `src/img/${eleccion(pc)}.svg`);
   imgE.setAttribute("alt", eleccion(pc));
 
   console.log("Pc elige: " + eleccion(pc));
@@ -68,8 +69,8 @@ function validacion() {
         imgE.setAttribute("src", `src/img/${vector[Math.floor(Math.random() * vector.length)]}.svg`);
       
         currentIndex = (currentIndex + 1) % vector.length;
-      }, 500);
-    }, 5000);
+      }, 300);
+    }, 3000);
   }
 
   if (pc == jugador) {
